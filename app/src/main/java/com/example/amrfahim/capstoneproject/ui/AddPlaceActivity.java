@@ -131,6 +131,8 @@ public class AddPlaceActivity extends AppCompatActivity {
                     }
 
                     Toast.makeText(context, "Place is added Successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, MainActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(context, "Please Fill all required Info!", Toast.LENGTH_LONG).show();
                 }
