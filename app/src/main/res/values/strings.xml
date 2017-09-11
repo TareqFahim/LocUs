@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LocUs</string>
+    <string name="place_name_intent_extra">place_name</string>
+    <string name="prefrences_fav_places">fav_places_names</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="16dp"
+    tools:context="com.example.amrfahim.capstoneproject.ui.AddPlaceActivity">
+
+    <EditText
+        android:id="@+id/add_place_edittext"
+        style="@style/EditTextStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="41dp"
+        android:hint="Place's Name" />
+
+    <EditText
+        android:id="@+id/add_location_edittext"
+        style="@style/EditTextStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/add_place_edittext"
+        android:layout_marginTop="30dp"
+        android:hint="Location" />
+
+    <EditText
+        android:id="@+id/add_phone_edittext"
+        style="@style/EditTextStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/add_location_edittext"
+        android:layout_marginTop="30dp"
+        android:hint="Phone" />
+
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_phone_edittext"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/img_url_tv"
+            style="@style/EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_below="@+id/add_phone_edittext"
+            android:layout_weight="2"
+            android:gravity="start|center"
+            android:text="Image Url"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/select_img_btn"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="16dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimaryDark"
+            android:text="Select Img"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/add_place_btn"
+        style="@style/LogInButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="Add Place" />
+
+</RelativeLayout>

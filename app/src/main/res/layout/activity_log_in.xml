@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="16dp"
+    tools:context="com.example.amrfahim.capstoneproject.ui.LogInActivity">
+
+    <ImageView
+        android:id="@+id/logo_imageView"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:src="@mipmap/logo" />
+
+    <EditText
+        android:id="@+id/email_editText_logIn"
+        style="@style/EditTextStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/logo_imageView"
+        android:layout_marginTop="30dp"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/password_editText_logIn"
+        style="@style/EditTextStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/email_editText_logIn"
+        android:layout_marginTop="21dp"
+        android:hint="Password" />
+
+    <Button
+        android:id="@+id/login_btn"
+        style="@style/LogInButtons"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/password_editText_logIn"
+        android:text="Log In" />
+
+    <Button
+        android:id="@+id/signup_btn_logIn"
+        style="@style/LogInButtons"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/login_btn"
+        android:text="Sign Up" />
+
+    <Button
+        android:id="@+id/facebook_btn"
+        style="@style/LogInButtons"
+        android:layout_width="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/signup_btn_logIn"
+        android:text="Log In with Facebook" />
+
+</RelativeLayout>

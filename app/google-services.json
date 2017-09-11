@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "259548897445",
+    "firebase_url": "https://simplechat-85d4f.firebaseio.com",
+    "project_id": "simplechat-85d4f",
+    "storage_bucket": "simplechat-85d4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259548897445:android:0ab1dd7563eb0531",
+        "android_client_info": {
+          "package_name": "com.example.hope.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259548897445-gv0qqskbek6srkb9egrgnhbrcajkjmlt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkgGSzZLwRCtogvwDv5RUkKXaCFdJI7ao"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259548897445:android:b7db08ed4e253ffd",
+        "android_client_info": {
+          "package_name": "com.example.amrfahim.capstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259548897445-gv0qqskbek6srkb9egrgnhbrcajkjmlt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkgGSzZLwRCtogvwDv5RUkKXaCFdJI7ao"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

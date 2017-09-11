@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="16dp"
+    tools:context="com.example.amrfahim.capstoneproject.ui.SignUpActivity">
+
+    <EditText
+        android:id="@+id/add_place_edittext"
+        style="@style/EditTextStyle"
+        android:layout_marginTop="41dp"
+        android:hint="Email"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/add_location_edittext"
+        style="@style/EditTextStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/add_place_edittext"
+        android:layout_marginTop="30dp"
+        android:hint="Password" />
+
+    <EditText
+        android:id="@+id/add_phone_edittext"
+        style="@style/EditTextStyle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/add_location_edittext"
+        android:layout_marginTop="30dp"
+        android:hint="Confirm Password" />
+    <Button
+        style="@style/LogInButtons"
+        android:text="Sign Up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
