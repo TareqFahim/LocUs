@@ -72,7 +72,7 @@ public class LogInActivity extends AppCompatActivity {
                 if (email != null && password != null && !email.equals("") && !password.equals("")) {
                     logIn();
                 }else{
-                    Toast.makeText(context, "Enter valid email and password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getString(R.string.toast_enter_valid_password), Toast.LENGTH_SHORT).show();
                 }
 
             }

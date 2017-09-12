@@ -10,10 +10,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Time"
+        android:text="@string/time"
         android:textSize="25sp" />
 
     <ImageView
+        android:contentDescription="@string/timetable_image_content_description"
         android:src="@drawable/ic_check_circle_green_24dp"
         android:id="@+id/time_table_image_view"
         android:layout_width="0dp"

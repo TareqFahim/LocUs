@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     PlacesGridAdapter mGridAdapter;
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();                    // Realtime Database Root
-    DatabaseReference mPlacesRef = mRootRef.child("places");
+    DatabaseReference mPlacesRef;
     DatabaseReference mSelectedPlaceRef, mImgsRef;
 
     @BindView(R.id.collapsing_toolbar_main_grid) CollapsingToolbarLayout collapsingToolbarLayout;
@@ -114,7 +114,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        collapsingToolbarLayout.setTitle("LocUs");
+        mPlacesRef = mRootRef.child(getString(R.string.firebase_database_places_ref));
+        collapsingToolbarLayout.setTitle(getString(R.string.app_name));
         toolbar.inflateMenu(R.menu.main_activity_menu);
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {

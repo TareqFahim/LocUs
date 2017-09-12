@@ -30,8 +30,8 @@ public class FavPlacesWidgetProvider extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 
         prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String favPlacesJsonStr = prefs.getString(context.getString(R.string.prefrences_fav_places), "No Favourite Places");
-        if(!favPlacesJsonStr.equals("No Favourite Places")){
+        String favPlacesJsonStr = prefs.getString(context.getString(R.string.prefrences_fav_places), context.getString(R.string.prefrences_default_value));
+        if(!favPlacesJsonStr.equals(context.getString(R.string.prefrences_default_value))){
             try {
                 favPlacesList = new PlacesJSONParser().parseJson(favPlacesJsonStr);
             } catch (Exception e) {

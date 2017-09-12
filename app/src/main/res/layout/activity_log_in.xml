@@ -21,19 +21,17 @@
         android:id="@+id/email_editText_logIn"
         style="@style/EditTextStyle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/logo_imageView"
         android:layout_marginTop="30dp"
-        android:hint="Email" />
+        android:hint="@string/email" />
 
     <EditText
         android:id="@+id/password_editText_logIn"
         style="@style/EditTextStyle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/email_editText_logIn"
         android:layout_marginTop="21dp"
-        android:hint="Password"
+        android:hint="@string/password"
         android:password="true" />
 
     <Button
@@ -43,8 +41,7 @@
         android:layout_height="40dp"
         android:layout_above="@+id/signup_btn_logIn"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="Log In" />
+        android:text="@string/log_in" />
 
     <Button
         android:id="@+id/signup_btn_logIn"
@@ -53,8 +50,7 @@
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="Sign Up" />
+        android:text="@string/sign_up" />
 
 
 </RelativeLayout>

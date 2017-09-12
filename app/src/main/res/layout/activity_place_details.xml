@@ -22,6 +22,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
+                    android:contentDescription="@string/place_image_content_description"
                     android:id="@+id/toolbar_image_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -39,15 +40,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Place Name"
+                        android:text="@string/place_name"
                         android:textColor="@color/white"
                         android:textSize="40sp" />
 
                     <ImageButton
+                        android:contentDescription="@string/fav_image_button_content_desciption"
                         android:id="@+id/fav_btn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end|center"
+                        android:layout_gravity="right|center"
                         android:layout_marginRight="8dp"
                         android:layout_weight="0.5"
                         android:background="@null"
@@ -83,7 +85,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:background="@color/colorPrimaryDark"
-            android:text="Check Time Table"
+            android:text="@string/timetable_btn_txt"
             android:textColor="@color/white" />
     </LinearLayout>
 

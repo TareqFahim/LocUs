@@ -12,28 +12,25 @@
         android:id="@+id/add_place_edittext"
         style="@style/EditTextStyle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="41dp"
-        android:hint="Place's Name" />
+        android:hint="@string/place_name" />
 
     <EditText
         android:id="@+id/add_location_edittext"
         style="@style/EditTextStyle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/add_place_edittext"
         android:layout_marginTop="30dp"
-        android:hint="Location" />
+        android:hint="@string/location" />
 
     <EditText
         android:id="@+id/add_phone_edittext"
         style="@style/EditTextStyle"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@+id/add_location_edittext"
         android:layout_marginTop="30dp"
-        android:hint="Phone" />
+        android:hint="@string/phone" />
 
     <LinearLayout
         android:id="@+id/linear_layout"
@@ -49,8 +46,8 @@
             android:layout_width="0dp"
             android:layout_below="@+id/add_phone_edittext"
             android:layout_weight="2"
-            android:gravity="start|center"
-            android:text="Image Url"
+            android:gravity="left|center"
+            android:text="@string/img_url"
             android:textSize="18sp" />
 
         <Button
@@ -60,7 +57,7 @@
             android:layout_marginLeft="16dp"
             android:layout_weight="1"
             android:background="@color/colorPrimaryDark"
-            android:text="Select Img"
+            android:text="@string/select_img_btn_txt"
             android:textColor="@color/white" />
     </LinearLayout>
 
@@ -80,7 +77,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:text="Add Place" />
+        android:text="@string/add_place_btn_txt" />
 
 </RelativeLayout>

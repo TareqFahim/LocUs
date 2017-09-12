@@ -37,7 +37,7 @@ import butterknife.ButterKnife;
 public class AddPlaceActivity extends AppCompatActivity {
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();                    // Realtime Database Root
-    DatabaseReference mPlacesRef = mRootRef.child("places");
+    DatabaseReference mPlacesRef ;
     DatabaseReference mAddedPlaceRef, mLocationRef, mPhoneRef, mTimeTableRef, mTimeRef, mPicRef;
 
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
@@ -70,6 +70,7 @@ public class AddPlaceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_place);
         ButterKnife.bind(this);
+        mPlacesRef = mRootRef.child(getString(R.string.firebase_database_places_ref));
     }
 
     @Override
@@ -95,20 +96,20 @@ public class AddPlaceActivity extends AppCompatActivity {
                     // Add Place Name
                     mAddedPlaceRef = mPlacesRef.child(name);
                     // Add Phone and set phone number
-                    mPhoneRef = mAddedPlaceRef.child("Phone");
+                    mPhoneRef = mAddedPlaceRef.child(getString(R.string.firebase_database_phone_ref));
                     mPhoneRef.setValue(phone);
                     // Add Location and set location Name
-                    mLocationRef = mAddedPlaceRef.child("Location");
+                    mLocationRef = mAddedPlaceRef.child(getString(R.string.firebase_database_location_ref));
                     mLocationRef.setValue(location);
                     // Add Time Table
-                    mTimeTableRef = mAddedPlaceRef.child("TimeTable");
+                    mTimeTableRef = mAddedPlaceRef.child(getString(R.string.firebase_database_timetable_ref));
                     for (int i = 1; i < 25; i++) {
                         mTimeRef = mTimeTableRef.child(Integer.toString(i));
                         mTimeRef.setValue(true);
                     }
 
-                    if (!imgUrl.equals("") || imgUrl != null) {
-                        String storagePath = "places_imgs/" + UUID.randomUUID() + ".png";
+                    if (imgUrl != null || !imgUrl.equals("")) {
+                        String storagePath = getString(R.string.firebase_storage_root) + UUID.randomUUID() + getString(R.string.image_extension);
                         StorageReference placesImgsRef = firebaseStorage.getReference(storagePath);
                         final UploadTask uploadTask = placesImgsRef.putBytes(imgByteArray);
                         progressBar.setVisibility(View.VISIBLE);
@@ -121,20 +122,20 @@ public class AddPlaceActivity extends AppCompatActivity {
                                 @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
                                 imgDownloadUrl = downloadUrl.toString();
                                 // Add Img's Url to Database
-                                mPicRef = mAddedPlaceRef.child("Pic");
+                                mPicRef = mAddedPlaceRef.child(getString(R.string.firebase_database_pic_ref));
                                 mPicRef.setValue(imgDownloadUrl);
-                                Toast.makeText(context, "Image Uploaded Successfully!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, getString(R.string.toast_image_upload_successful_message), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(context, MainActivity.class);
                                 startActivity(intent);
                             }
                         });
                     }
 
-                    Toast.makeText(context, "Place is added Successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getString(R.string.toast_place_added_successful_message), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(context, "Please Fill all required Info!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, getString(R.string.toast_fill_required_info), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -176,7 +177,7 @@ public class AddPlaceActivity extends AppCompatActivity {
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    Toast.makeText(this, "You should grant Permission to upload photo!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, getString(R.string.toast_grant_permission), Toast.LENGTH_SHORT).show();
                 }
                 return;
             }

@@ -1,8 +1,55 @@
 <resources>
     <string name="app_name">LocUs</string>
     <string name="place_name_intent_extra">place_name</string>
+
     <string name="prefrences_fav_places">fav_places_names</string>
+    <string name="prefrences_default_value">No Favourite Places</string>
+
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="action_sign_out">Sign Out</string>
+
+    <string name="firebase_database_places_ref">places</string>
+    <string name="firebase_database_location_ref">Location</string>
+    <string name="firebase_database_pic_ref">Pic</string>
+    <string name="firebase_database_phone_ref">Phone</string>
+    <string name="firebase_database_timetable_ref">TimeTable</string>
+
+    <string name="firebase_storage_root">places_imgs/</string>
+    <string name="image_extension">.png</string>
+
+    <string name="toast_image_upload_successful_message">Image Uploaded Successfully!</string>
+    <string name="toast_place_added_successful_message">Place is added Successfully</string>
+    <string name="toast_fill_required_info">Please Fill all required Info!</string>
+    <string name="toast_grant_permission">You should grant Permission to upload photo!</string>
+    <string name="toast_enter_valid_password">Enter valid email and password!</string>
+    <string name="toast_error_creating_json">Error creating Json</string>
+    <string name="toast_password_confirmation">Password confirmation doesn\'t match password!</string>
+    <string name="toast_signup_unsuccessful_message">Sign Up was not Successful, Please check your Info!</string>
+    <string name="toast_user_added_successfully_message">User is Added Successfully!</string>
+
+    <string name="add_place_fab_content_description">Add Place</string>
+    <string name="fav_image_button_content_desciption">Add Place to Fav List</string>
+    <string name="place_image_content_description">Place Image</string>
+    <string name="timetable_image_content_description">Check means Available, X means not Available</string>
+
+    <string name="place_name">Place Name</string>
+    <string name="location">Location</string>
+    <string name="phone">Phone</string>
+    <string name="img_url">Image Url</string>
+    <string name="select_img_btn_txt">Select Img</string>
+    <string name="add_place_btn_txt">Add Place</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="timetable_btn_txt">Time Table</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="time">Time</string>
+    <string name="availability">Availability</string>
+    <string name="title">Title</string>
+    <string name="info">Info</string>
+
+
+
 </resources>

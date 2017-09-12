@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
-                android:text="Title"
+                android:text="@string/title"
                 android:textSize="30sp"
                 android:textColor="#000000"/>
             <TextView
@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="left"
-                android:text="Info"
+                android:text="@string/info"
                 android:textSize="15sp" />
         </LinearLayout>
     </android.support.v7.widget.CardView>

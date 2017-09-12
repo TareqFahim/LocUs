@@ -16,9 +16,13 @@ public class PlacesJSONParser {
 
     public List parseJson(String json) throws Exception{
 
+        places = new ArrayList();
+        if(json == null || json.equals("")){
+            places.add("");
+            return places;
+        }
         JSONObject placesJSONObject = new JSONObject(json);
         JSONArray placesArray = placesJSONObject.getJSONArray(OWM_RECIPE_PLACES);
-        places = new ArrayList();
         for (int i = 0; i < placesArray.length(); i++) {
             this.places.add(placesArray.get(i));
         }

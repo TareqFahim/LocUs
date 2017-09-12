@@ -66,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
                 password = passwordEditText.getText().toString();
                 if(email != null && !email.equals("") && password != null && !password.equals("")){
                     if(!password.equals(confirmEditText.getText().toString())){
-                        Toast.makeText(context, "Password confirmation doesn't match password!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, getString(R.string.toast_password_confirmation), Toast.LENGTH_SHORT).show();
                     }else {
                         createAccount();
                     }
@@ -88,9 +88,9 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()){
-                    Toast.makeText(context, "Sign Up was not Successful, Please check your Info!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getString(R.string.toast_signup_unsuccessful_message), Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(context, "User is Added Successfully!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getString(R.string.toast_user_added_successfully_message), Toast.LENGTH_SHORT).show();
                 }
             }
         });

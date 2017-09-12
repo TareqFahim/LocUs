@@ -31,7 +31,7 @@ public class TimeTableActivity extends AppCompatActivity {
     String placeNamrStr;
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();                    // Realtime Database Root
-    DatabaseReference mPlacesRef = mRootRef.child("places");
+    DatabaseReference mPlacesRef;
     DatabaseReference mSelectedPlaceRef, mTimeTableRef;
 
     @Override
@@ -39,6 +39,7 @@ public class TimeTableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_table);
         ButterKnife.bind(this);
+        mPlacesRef = mRootRef.child(getString(R.string.firebase_database_places_ref));
         int noOfColumns = 1;
         GridLayoutManager layoutManager = new GridLayoutManager(this, noOfColumns);
         mTimeTableRecyclerView.setLayoutManager(layoutManager);
@@ -52,7 +53,7 @@ public class TimeTableActivity extends AppCompatActivity {
         if(intent.hasExtra(getString(R.string.place_name_intent_extra))){
             placeNamrStr = intent.getStringExtra(getString(R.string.place_name_intent_extra));
             mSelectedPlaceRef = mPlacesRef.child(placeNamrStr);
-            mTimeTableRef = mSelectedPlaceRef.child("TimeTable");
+            mTimeTableRef = mSelectedPlaceRef.child(getString(R.string.firebase_database_timetable_ref));
         }
         time = new ArrayList<>();
         timeAvail = new ArrayList<>();

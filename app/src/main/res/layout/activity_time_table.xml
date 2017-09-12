@@ -26,7 +26,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="bottom"
-                    android:text="Time"
+                    android:text="@string/time"
                     android:textColor="@color/white"
                     android:textSize="30sp" />
 
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="bottom"
-                    android:text="Availability"
+                    android:text="@string/availability"
                     android:textColor="@color/white"
                     android:textSize="30sp" />
             </LinearLayout>

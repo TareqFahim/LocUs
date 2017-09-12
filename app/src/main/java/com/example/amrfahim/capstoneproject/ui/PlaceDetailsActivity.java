@@ -55,17 +55,20 @@ public class PlaceDetailsActivity extends AppCompatActivity {
     private PlaceDetailsListAdapter mListAdapter;
 
     DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();                    // Realtime Database Root
-    DatabaseReference mPlacesRef = mRootRef.child("places");
+    DatabaseReference mPlacesRef;
     DatabaseReference mSelectedPlaceRef;
 
     SharedPreferences prefs;
     Context context = this;
+
+    String favPlacesJsonStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_details);
         ButterKnife.bind(this);
+        mPlacesRef = mRootRef.child(getString(R.string.firebase_database_places_ref));
         Intent intent = getIntent();
         if (intent.hasExtra(getString(R.string.place_name_intent_extra))) {
             placeNameStr = intent.getStringExtra(getString(R.string.place_name_intent_extra));
@@ -88,7 +91,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         final SharedPreferences.Editor editor = prefs.edit();
 
         try {
-            String favPlacesJsonStr = prefs.getString(getString(R.string.prefrences_fav_places), "No Favourite Places");
+            favPlacesJsonStr = prefs.getString(getString(R.string.prefrences_fav_places), getString(R.string.prefrences_default_value));
             favPlacesList = new PlacesJSONParser().parseJson(favPlacesJsonStr);
             if (favPlacesList.contains(placeNameStr)) {
                 favBtn.setImageResource(R.drawable.ic_favorite_white_24px);
@@ -107,7 +110,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                     try {
                         String titleStr = dataSnapshot.getKey();
                         String infoStr = (String) dataSnapshot.getValue();
-                        if (titleStr.equals("Pic")) {
+                        if (titleStr.equals(getString(R.string.firebase_database_pic_ref))) {
                             Picasso.with(context).load(infoStr).fit().into(placeImageView);
                         }
                         placeInfoTitleList.add(titleStr);
@@ -153,7 +156,14 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     JSONObject placesJson = new JSONObject();
                     List temp = new ArrayList();
-                    temp.add(placeNameStr);
+                    try {
+                        temp = new PlacesJSONParser().parseJson(favPlacesJsonStr);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    if(!checkIfExsistsInPref(placeNameStr)) {
+                        temp.add(placeNameStr);
+                    }
                     try {
                         placesJson.put("places_json", new JSONArray(temp));
                         String ss = placesJson.toString();
@@ -161,18 +171,15 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                         editor.commit();
                         favBtn.setImageResource(R.drawable.ic_favorite_white_24px);
                     } catch (JSONException e) {
-                        Toast.makeText(c, "Error creating Json", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(c, getString(R.string.toast_error_creating_json), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
     }
 
-    public void addToPref(String s) {
-        prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(getString(R.string.prefrences_fav_places), s);
-        editor.commit();
+    public boolean checkIfExsistsInPref(String s) {
+        return favPlacesList.contains(s);
     }
 
     private void setPlaceInfoListAdapter() {
