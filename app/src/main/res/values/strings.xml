@@ -7,7 +7,9 @@
 
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+
     <string name="action_sign_out">Sign Out</string>
+    <string name="action_log_in">Log In</string>
 
     <string name="firebase_database_places_ref">places</string>
     <string name="firebase_database_location_ref">Location</string>
@@ -49,7 +51,7 @@
     <string name="availability">Availability</string>
     <string name="title">Title</string>
     <string name="info">Info</string>
-
+    <string name="action_refresh">Refresh</string>
 
 
 </resources>

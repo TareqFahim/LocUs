@@ -41,9 +41,12 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference mPlacesRef;
     DatabaseReference mSelectedPlaceRef, mImgsRef;
 
-    @BindView(R.id.collapsing_toolbar_main_grid) CollapsingToolbarLayout collapsingToolbarLayout;
-    @BindView(R.id.main_screen_recycler_view) RecyclerView mPlacesTitlesGrid;
-    @BindView(R.id.add_place_fab) FloatingActionButton addPlaceFab;
+    @BindView(R.id.collapsing_toolbar_main_grid)
+    CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView(R.id.main_screen_recycler_view)
+    RecyclerView mPlacesTitlesGrid;
+    @BindView(R.id.add_place_fab)
+    FloatingActionButton addPlaceFab;
     @BindView(R.id.toolbar_main_grid)
     Toolbar toolbar;
 
@@ -63,9 +66,15 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if(item.getItemId() == R.id.action_sign_out){
+                if (item.getItemId() == R.id.action_sign_out) {
                     mAuth.signOut();
+                    Intent intent = new Intent(context, MainActivity.class);
+                    startActivity(intent);
+                }else if(item.getItemId() == R.id.action_log_in){
                     Intent intent = new Intent(context, LogInActivity.class);
+                    startActivity(intent);
+                }else if(item.getItemId() == R.id.action_refresh){
+                    Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                 }
                 return false;
@@ -122,9 +131,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user == null){
-                    Intent intent = new Intent(context, LogInActivity.class);
-                    startActivity(intent);
+                if (user == null) {
+                    addPlaceFab.setVisibility(View.GONE);
+                    toolbar.getMenu().findItem(R.id.action_sign_out).setVisible(false);
+                    toolbar.getMenu().findItem(R.id.action_log_in).setVisible(true);
+                }else{
+                    addPlaceFab.setVisibility(View.VISIBLE);
+                    toolbar.getMenu().findItem(R.id.action_sign_out).setVisible(true);
+                    toolbar.getMenu().findItem(R.id.action_log_in).setVisible(false);
                 }
             }
         };
@@ -144,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if(mAuthListener != null){
+        if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }

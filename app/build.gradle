@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'locuskey'
             keyPassword 'password'
-            storeFile file('D:/Android/Projects/CapstoneProject/keystore.jks')
+            storeFile file('$rootdir/keystore.jks')
             storePassword 'password'
         }
     }

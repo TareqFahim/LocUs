@@ -179,6 +179,8 @@ public class PlaceDetailsActivity extends AppCompatActivity {
     }
 
     public boolean checkIfExsistsInPref(String s) {
+        if(favPlacesList == null)
+            return false;
         return favPlacesList.contains(s);
     }
 
