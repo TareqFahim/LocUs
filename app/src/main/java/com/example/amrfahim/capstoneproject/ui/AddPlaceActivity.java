@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.amrfahim.capstoneproject.R;
+import com.example.amrfahim.capstoneproject.utils.UploadImageToStorageAsyncTask;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -64,6 +65,7 @@ public class AddPlaceActivity extends AppCompatActivity {
     byte[] imgByteArray;
 
     final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
+    private UploadImageToStorageAsyncTask uploadAsynTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +94,7 @@ public class AddPlaceActivity extends AppCompatActivity {
                 name = placeEditText.getText().toString();
                 location = locationEditText.getText().toString();
                 phone = phoneEditText.getText().toString();
-                if ((name != null || !name.equals("")) && (location != null || !location.equals("")) && (phone != null || !phone.equals(""))) {
+                if ((name != null && !name.equals("")) && (location != null && !location.equals("")) && (phone != null && !phone.equals(""))) {
                     // Add Place Name
                     mAddedPlaceRef = mPlacesRef.child(name);
                     // Add Phone and set phone number
@@ -108,27 +110,28 @@ public class AddPlaceActivity extends AppCompatActivity {
                         mTimeRef.setValue(true);
                     }
 
-                    if (imgUrl != null || !imgUrl.equals("")) {
+                    if (imgUrl != null && !imgUrl.equals("")) {
                         String storagePath = getString(R.string.firebase_storage_root) + UUID.randomUUID() + getString(R.string.image_extension);
                         StorageReference placesImgsRef = firebaseStorage.getReference(storagePath);
-                        final UploadTask uploadTask = placesImgsRef.putBytes(imgByteArray);
-                        progressBar.setVisibility(View.VISIBLE);
-                        addPlaceBtn.setEnabled(false);
-                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        uploadAsynTask = new UploadImageToStorageAsyncTask(imgByteArray, new UploadImageToStorageAsyncTask.Callback() {
                             @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            public void asyncCallback(String imgDownloadUrl) {
                                 progressBar.setVisibility(View.INVISIBLE);
                                 addPlaceBtn.setEnabled(true);
-                                @SuppressWarnings("VisibleForTests") Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                                imgDownloadUrl = downloadUrl.toString();
                                 // Add Img's Url to Database
                                 mPicRef = mAddedPlaceRef.child(getString(R.string.firebase_database_pic_ref));
                                 mPicRef.setValue(imgDownloadUrl);
+
                                 Toast.makeText(context, getString(R.string.toast_image_upload_successful_message), Toast.LENGTH_SHORT).show();
+                                // Return to main grid
                                 Intent intent = new Intent(context, MainActivity.class);
                                 startActivity(intent);
                             }
                         });
+                        uploadAsynTask.execute(placesImgsRef);
+
+                        progressBar.setVisibility(View.VISIBLE);
+                        addPlaceBtn.setEnabled(false);
                     }
 
                     Toast.makeText(context, getString(R.string.toast_place_added_successful_message), Toast.LENGTH_SHORT).show();

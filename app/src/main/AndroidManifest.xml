@@ -40,6 +40,14 @@
             android:name=".widget.WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
+        <service
+            android:exported="false"
+            android:name=".utils.ReadFromDatabaseJobService">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
+
         <receiver android:name="com.example.amrfahim.capstoneproject.widget.FavPlacesWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
